@@ -8,4 +8,14 @@ export const accounts = pgTable('accounts', {
     userId: text('user_id').notNull(),
 });
 
-export const insertAccountsSchema = createInsertSchema(accounts);
+export const insertAccountSchema = createInsertSchema(accounts);
+
+export const categories = pgTable('categories', {
+    id: text('id').primaryKey(),
+    plaId: text('plaid_id'),
+    name: text('name').notNull(),
+    userId: text('user_id').notNull(),
+});
+
+
+export const insertCategorySchema = createInsertSchema(categories);

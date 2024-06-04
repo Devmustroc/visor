@@ -10,7 +10,7 @@ const Welcome = () => {
             className="spac-y-2 mb-4"
         >
             <h2
-                className="text-2xl  lg:text-4xl text-white font-medium"
+                className="text-2xl  lg:text-4xl text-black font-medium"
             >
                 Welcome Back{ isLoaded ? ", " : " "} {user?.firstName}
             </h2>

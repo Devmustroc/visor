@@ -9,7 +9,7 @@ import Welcome from "@/components/Header/welcome";
 const Header = () => {
     return (
         <div
-            className="bg-gradient-to-b from-emerald-500 to-emerald-300 px-4 py-8 lg:px-14 pb-36"
+            className="bg-gradient-to-b from-emerald-500 via-emerald-300 to-white px-4 py-8 lg:px-14 pb-36"
         >
             <div
                 className="max-w-screen-2xl mx-auto"

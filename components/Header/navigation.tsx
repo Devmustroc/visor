@@ -31,7 +31,7 @@ const route = [
         label: 'Accounts',
     },
     {
-        href: '/Categories',
+        href: '/categories',
         label: 'Categories',
     },
     {
