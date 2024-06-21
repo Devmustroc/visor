@@ -1,0 +1,27 @@
+{
+  "version": "6",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1717145165682,
+      "tag": "0000_opposite_xorn",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1717498273013,
+      "tag": "0001_mixed_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1717525935595,
+      "tag": "0002_fast_ken_ellis",
+      "breakpoints": true
+    }
+  ]
+}

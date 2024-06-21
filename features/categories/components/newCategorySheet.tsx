@@ -51,21 +51,15 @@ const NewCategorySheet = () => {
                             alt="logo"
                             width={500}
                             height={200}
-                            className="h-auto w-auto"
+                            className="h-auto w-auto text-2xl font-semibold text-black -translate-x-2.5"
                         />
-                        <h2
-                            className="text-2xl font-semibold text-black -translate-x-2.5"
-                        >
                             Visor
-                        </h2>
                     </SheetTitle>
                     <Separator />
-                    <SheetDescription>
-                        <p
-                            className="text-lg font-semibold text-black"
-                        >
+                    <SheetDescription
+                        className="text-lg font-semibold text-black"
+                    >
                             Create a new category
-                        </p>
                     </SheetDescription>
                 </SheetHeader>
                 <CategoryForm

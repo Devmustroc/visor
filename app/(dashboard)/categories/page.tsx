@@ -4,22 +4,24 @@ import React from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
 import {Loader2, Plus} from "lucide-react";
-import {columns} from "@/app/(dashboard)/accounts/_dataTable/column";
-import {DataTable} from "@/app/(dashboard)/accounts/_components/data-table";
+
 import {Skeleton} from "@/components/ui/skeleton";
 import {useNewCategory} from "@/features/categories/hooks/useNewCategory";
 import {useGetCategories} from "@/features/categories/api/useGetCategories";
 import {useBulkDeleteCategories} from "@/features/categories/api/useBulkDeleteCategories";
 
+import {columns} from "@/app/(dashboard)/categories/_dataTable/column";
+import {DataTable} from "@/app/(dashboard)/categories/_components/data-table";
+
 const CategoriesPage = () => {
     const newCategory = useNewCategory();
-    const accountsQuery = useGetCategories();
-    const deleteAccount = useBulkDeleteCategories();
-    const accounts = accountsQuery.data || [];
+    const categoriesQuery = useGetCategories();
+    const deleteCategories = useBulkDeleteCategories();
+    const categories = categoriesQuery.data || [];
 
-    const isDisabled = accountsQuery.isLoading || deleteAccount.isPending;
+    const isDisabled = categoriesQuery.isLoading || deleteCategories.isPending;
 
-    if(accountsQuery.isLoading) {
+    if(categoriesQuery.isLoading) {
         return (
             <div
                 className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24"
@@ -74,11 +76,11 @@ const CategoriesPage = () => {
                 <CardContent>
                     <DataTable
                         columns={columns}
-                        data={accounts}
+                        data={categories}
                         filterKey="name"
                         onDelete={(row) => {
                             const ids = row.map((r) => r.original.id);
-                            deleteAccount.mutate({ids});
+                            deleteCategories.mutate({ids});
                         }}
                         disabled={isDisabled}
                     />
