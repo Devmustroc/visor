@@ -1,20 +1,31 @@
 'use client';
 
-import React from 'react';
+import React, {useState} from 'react';
 import {Card, CardContent, CardHeader, CardTitle} from "@/components/ui/card";
 import {Button} from "@/components/ui/button";
-import {Loader2, Plus} from "lucide-react";
-import {useNewAccount} from "@/features/accounts/hooks/useNewAccount";
-import {columns} from "@/app/(dashboard)/accounts/_dataTable/column";
-import {DataTable} from "@/app/(dashboard)/accounts/_components/data-table";
-import {useGetAccounts} from "@/features/accounts/api/useGetAccounts";
 import {Skeleton} from "@/components/ui/skeleton";
-import {useBulkDeleteAccount} from "@/features/accounts/api/useBulkDeleteAccounts";
 import {useNewTransaction} from "@/features/transactions/hooks/useNewTransaction";
 import {useGetTransactions} from "@/features/transactions/api/useGetTransactions";
 import {useBulkDeleteTransactions} from "@/features/transactions/api/useBulkDeleteTransactions";
+import {DataTable} from "@/app/(dashboard)/transactions/_components/data-table";
+import {columns} from "@/app/(dashboard)/transactions/_dataTable/column";
+import {Loader2, Plus} from "lucide-react";
+
+enum VARIANTS  {
+    LIST = "LIST",
+    IMPORT = "IMPORT"
+
+}
+
+const INITIAL_RESULTS = {
+    data: [],
+    error: [],
+    meta: {}
+}
 
 const TransactionsPage = () => {
+    const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST)
+    
     const newTransaction = useNewTransaction();
     const transactionQuery = useGetTransactions();
     const deleteTransactions = useBulkDeleteTransactions()
@@ -49,6 +60,16 @@ const TransactionsPage = () => {
         );
     }
 
+    if (variant == VARIANTS.IMPORT) {
+        return(
+            <>
+                <div>
+                    This is Screen for Importing Transactions
+                </div>
+            </>
+        )
+    }
+
     return (
         <div
             className="max-w-screen-2xl mx-auto w-full pb-10 -mt-24"
@@ -73,12 +94,17 @@ const TransactionsPage = () => {
                         />
                         Add New
                     </Button>
+                    <Button>
+                        <UploadButton
+                            upload={() => {}}
+                        />
+                    </Button>
                 </CardHeader>
                 <CardContent>
                     <DataTable
                         columns={columns}
                         data={transactions}
-                        filterKey="name"
+                        filterKey="payee"
                         onDelete={(row) => {
                             const ids = row.map((r) => r.original.id);
                             deleteTransactions.mutate({ids});

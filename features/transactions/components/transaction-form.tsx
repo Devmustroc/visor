@@ -11,11 +11,12 @@ import {Button} from "@/components/ui/button";
 import {Trash} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import {useRouter} from "next/navigation";
-import {insertAccountSchema, insertTransactionSchema} from "@/db/schemas";
+import {insertTransactionSchema} from "@/db/schemas";
 import Select from "@/components/ui/select";
 import DatePicker from "@/components/ui/date-picker";
 import {Textarea} from "@/components/ui/textarea";
 import AmountInput from "@/components/ui/amountInput";
+import {convertToMillUnit} from "@/lib/utils";
 
 const formSchema = z.object({
     date: z.coerce.date(),
@@ -72,9 +73,12 @@ const TransactionForm = ({
     });
 
     const handleSubmit = (values: formValues) => {
-
-        /*nSubmit(values);*/
-        console.log(values);
+        const amount = parseFloat(values.amount)
+        const amountInMillUnit = convertToMillUnit(amount)
+        onSubmit({
+            ...values,
+            amount: amountInMillUnit,
+        })
         router.refresh();
 
     };
@@ -179,6 +183,7 @@ const TransactionForm = ({
                                 <AmountInput
                                     {...field}
                                     disabled={disabled}
+                                    placeholder={"0.00"}
                                     value={field.value}
                                     onChange={field.onChange}
                                 />

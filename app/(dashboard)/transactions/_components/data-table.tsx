@@ -81,7 +81,7 @@ export function DataTable<TData, TValue>({
             <ConfirmDialog />
             <div className="flex items-center justify-between py-4">
                 <Input
-                    placeholder="Filter emails..."
+                    placeholder="Filter..."
                     value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ""}
                     onChange={(event) =>
                         table.getColumn(filterKey)?.setFilterValue(event.target.value)

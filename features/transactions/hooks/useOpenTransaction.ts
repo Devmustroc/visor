@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
-type OpenAccountState = {
+type OpenATransactionState = {
     id?: string;
     isOpen: boolean;
     onOpen: (id: string) => void;
     onClose: () => void;
 };
 
-export const useOpenAccount = create<OpenAccountState>((set) => ({
+export const useOpenTransaction = create<OpenATransactionState>((set) => ({
     id: undefined,
     isOpen: false,
     onOpen: (id: string) => set({ isOpen: true, id }),

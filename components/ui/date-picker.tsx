@@ -26,7 +26,6 @@ const DatePicker = ({
                         disabled,
 
     }: Props) => {
-    console.log(value)
     return (
         <Popover
             modal={true}
@@ -50,6 +49,7 @@ const DatePicker = ({
                     onSelect={onChange}
                     disabled={disabled}
                     className="rounded-md border"
+                    initialFocus
                 />
             </PopoverContent>
         </Popover>

@@ -5,15 +5,14 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
+
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {Button} from "@/components/ui/button";
 import {Edit, MoreHorizontal, Trash} from "lucide-react";
-import {useOpenAccount} from "@/features/accounts/hooks/useOpenAccount";
 import {useConfirm} from "@/hooks/use-confirm";
-import {useDeleteAccount} from "@/features/accounts/api/useDeleteAccount";
+import {useOpenTransaction} from "@/features/transactions/hooks/useOpenTransaction";
+import {useDeleteTransaction} from "@/features/transactions/api/useDeleteTransaction";
 
 type Props = {
     id: string;
@@ -21,11 +20,11 @@ type Props = {
 
 
 const Actions = ({ id }: Props) => {
-    const { onOpen } = useOpenAccount();
-    const deleteMutation = useDeleteAccount(id);
+    const { onOpen } = useOpenTransaction();
+    const deleteMutation = useDeleteTransaction(id);
     const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure?",
-        "You are about to delete account."
+        "You are about to delete Transaction."
     );
 
 
