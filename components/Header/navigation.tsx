@@ -6,14 +6,10 @@ import NavButton from "@/components/Header/navButton";
 import {
     Sheet,
     SheetContent,
-    SheetDescription,
-    SheetHeader,
-    SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet";
 import  { useMedia } from 'react-use';
 import {useRouter} from "next/navigation";
-import {router} from "next/client";
 import {Button} from "@/components/ui/button";
 import {Menu} from "lucide-react";
 
@@ -78,7 +74,7 @@ const Navigation = () => {
                         className="flex flex-col gap-y-2 pt-6"
                     >
                         {
-                            route.map((item, index) => (
+                            route.map((item) => (
                                 <Button
                                     key={item.href}
                                     variant={pathname === item.href ? 'secondary' : 'ghost'}
@@ -97,7 +93,7 @@ const Navigation = () => {
     return (
         <nav className="hidden lg:flex overflow-x-auto items-center gap-x-2">
             {
-                route.map((item, index) => (
+                route.map((item) => (
                     <NavButton
                         key={item.href}
                         href={item.href}

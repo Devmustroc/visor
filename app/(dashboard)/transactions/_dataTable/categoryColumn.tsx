@@ -1,5 +1,5 @@
 import {useOpenCategory} from "@/features/categories/hooks/useOpenCategory";
-import {Triangle, TriangleAlert} from "lucide-react";
+import {TriangleAlert} from "lucide-react";
 import {cn} from "@/lib/utils";
 import {useOpenTransaction} from "@/features/transactions/hooks/useOpenTransaction";
 

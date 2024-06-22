@@ -1,7 +1,7 @@
 import { Hono } from 'hono';
 import {z} from "zod";
 import { db } from "@/db/drizzle";
-import {transactions, insertTransactionSchema, categories, accounts, insertCategorySchema} from "@/db/schemas";
+import {transactions, insertTransactionSchema, categories, accounts} from "@/db/schemas";
 import {clerkMiddleware, getAuth} from "@hono/clerk-auth";
 import {zValidator} from "@hono/zod-validator";
 import {createId} from "@paralleldrive/cuid2";
