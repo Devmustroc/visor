@@ -25,7 +25,8 @@ const INITIAL_RESULTS = {
 }
 
 const TransactionsPage = () => {
-    const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST)
+    const [variant, setVariant] = useState<VARIANTS>(VARIANTS.LIST);
+    const [importResults, setImportResults] = useState(INITIAL_RESULTS)
     
     const newTransaction = useNewTransaction();
     const transactionQuery = useGetTransactions();
@@ -34,6 +35,15 @@ const TransactionsPage = () => {
 
     const isDisabled = transactionQuery.isLoading || deleteTransactions.isPending;
 
+    const onUpload = (results: typeof INITIAL_RESULTS) => {
+        setImportResults(results);
+        setVariant(VARIANTS.IMPORT)
+    }
+
+    const OnCancel = () => {
+        setImportResults(INITIAL_RESULTS);
+        setVariant(VARIANTS.LIST);
+    }
     if(transactionQuery.isLoading) {
         return (
             <div
@@ -64,9 +74,7 @@ const TransactionsPage = () => {
     if (variant == VARIANTS.IMPORT) {
         return(
             <>
-                <div>
-                    This is Screen for Importing Transactions
-                </div>
+                <ImportCard />
             </>
         )
     }
@@ -86,20 +94,24 @@ const TransactionsPage = () => {
                     >
                         Transactions Overview
                     </CardTitle>
-                    <Button
-                        onClick={newTransaction.onOpen}
-                        className="bg-emerald-500 text-white hover:bg-emerald-600 lg:w-32 lg:mt-0 mt-4"
+                    <div
+                        className="flex items-center space-x-2 lg:space-x-2"
                     >
-                        <Plus
-                            className="w-6 h-6 mr-2"
-                        />
-                        Add New
-                    </Button>
-                    <Button>
-                        <UploadButton
-                            upload={() => {}}
-                        />
-                    </Button>
+                        <Button
+                            onClick={newTransaction.onOpen}
+                            className="bg-emerald-500 text-white hover:bg-emerald-600 lg:w-32 lg:mt-0 "
+                        >
+                            <Plus
+                                className="w-6 h-6 mr-2"
+                            />
+                            Add New
+                        </Button>
+                        <Button>
+                            <UploadButton
+                                onUpload={onUpload}
+                            />
+                        </Button>
+                    </div>
                 </CardHeader>
                 <CardContent>
                     <DataTable
