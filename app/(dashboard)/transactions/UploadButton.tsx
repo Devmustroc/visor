@@ -4,7 +4,7 @@ import {Button} from "@/components/ui/button";
 import {UploadIcon} from "lucide-react";
 
 type Props = {
-    onUpload: () => void;
+    onUpload: (results: any) => void;
 }
 
 const UploadButton = ({ onUpload }: Props) => {
@@ -14,11 +14,12 @@ const UploadButton = ({ onUpload }: Props) => {
     return (
         <CSVReader
             onUploadAccepted={onUpload}
+            config={{ encoding: "utf-8" }}
         >
             {({ getRootProps} : any) => (
                 <Button
                     size="sm"
-                    className="w-full lg:w-auto"
+                    className="w-full bg-sky-600 text-white hover:bg-primary-600 py-5"
                     {...getRootProps()}
                 >
                     <UploadIcon

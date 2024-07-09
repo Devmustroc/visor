@@ -11,6 +11,7 @@ import {DataTable} from "@/app/(dashboard)/transactions/_components/data-table";
 import {columns} from "@/app/(dashboard)/transactions/_dataTable/column";
 import {Loader2, Plus} from "lucide-react";
 import UploadButton from "@/app/(dashboard)/transactions/UploadButton";
+import ImportCard from "@/app/(dashboard)/transactions/importCard";
 
 enum VARIANTS  {
     LIST = "LIST",
@@ -74,7 +75,11 @@ const TransactionsPage = () => {
     if (variant == VARIANTS.IMPORT) {
         return(
             <>
-                <ImportCard />
+                <ImportCard
+                    data={importResults.data}
+                    onCancel={OnCancel}
+                    onSubmit={() => {}}
+                />
             </>
         )
     }
@@ -99,18 +104,16 @@ const TransactionsPage = () => {
                     >
                         <Button
                             onClick={newTransaction.onOpen}
-                            className="bg-emerald-500 text-white hover:bg-emerald-600 lg:w-32 lg:mt-0 "
+                            className="w-full lg:w-auto bg-emerald-500 text-white hover:bg-emerald-600 lg:mt-0 "
                         >
                             <Plus
                                 className="w-6 h-6 mr-2"
                             />
                             Add New
                         </Button>
-                        <Button>
-                            <UploadButton
-                                onUpload={onUpload}
-                            />
-                        </Button>
+                        <UploadButton
+                            onUpload={onUpload}
+                        />
                     </div>
                 </CardHeader>
                 <CardContent>

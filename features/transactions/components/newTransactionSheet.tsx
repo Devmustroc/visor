@@ -79,16 +79,20 @@ const NewTransactionSheet = () => {
                     className="flex flex-col space-y-2 text-center sm:text-center mt-4"
                 >
                     <SheetTitle
-                        className="flex flex-col items-center justify-center"
+                        className="flex flex-col items-center justify-start space-y-2 text-center sm:text-center mt-4 md:flex-row md:items-center md:justify-center md:space-x-2 md:space-y-0"
                     >
                         <Image
                             src="/logo.svg"
                             alt="logo"
-                            width={500}
-                            height={200}
-                            className="h-auto w-autotext-2xl font-semibold text-black -translate-x-2.5"
+                            width={100}
+                            height={150}
+                            className="rounded-full translate-x-1"
                         />
+                        <h3
+                            className="text-4xl font-extrabold text-black"
+                        >
                             Visor
+                        </h3>
                     </SheetTitle>
                     <Separator />
                     <SheetDescription

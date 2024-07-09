@@ -12,11 +12,13 @@ import {Trash} from "lucide-react";
 import {Input} from "@/components/ui/input";
 import {useRouter} from "next/navigation";
 import {insertTransactionSchema} from "@/db/schemas";
-import Select from "@/components/ui/select";
+
 import DatePicker from "@/components/ui/date-picker";
 import {Textarea} from "@/components/ui/textarea";
 import AmountInput from "@/components/ui/amountInput";
 import {convertToMillUnit} from "@/lib/utils";
+import {Select} from "@/components/select";
+
 
 const formSchema = z.object({
     date: z.coerce.date(),
