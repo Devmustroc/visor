@@ -5,7 +5,6 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Clerk](https://img.shields.io/badge/Clerk-Authentication-6C47FF?style=for-the-badge&logo=clerk&logoColor=white)](https://clerk.com/)
 [![Drizzle ORM](https://img.shields.io/badge/Drizzle_ORM-PostgreSQL-C5F74F?style=for-the-badge&logo=drizzle&logoColor=black)](https://orm.drizzle.team/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 **Visor** is a modern, full-stack personal financial dashboard and tracking web application. Built with **Next.js 14**, **Hono**, **Clerk Auth**, **Drizzle ORM**, **Neon Postgres**, and **TanStack Table**, it provides intuitive account tracking, transaction management, CSV data imports, and interactive financial reporting.
 
@@ -96,12 +95,6 @@ visor/
 ├── lib/                  # Hono RPC client & utility functions
 └── scripts/              # Database seed scripts
 ```
-
----
-
-## 📜 License
-
-Distributed under the MIT License.
 
 ---
 
